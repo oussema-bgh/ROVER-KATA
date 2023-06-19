@@ -1,4 +1,4 @@
-package org.example;
+package org.run;
 
 import models.Plateau;
 import models.Rover;
