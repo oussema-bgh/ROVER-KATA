@@ -16,7 +16,7 @@ public class RoverFactory {
         return new Rover(x, y, state, plateau);
     }
 
-    private RoverState createState(String direction) {
+    public RoverState createState(String direction) {
         switch (direction) {
             case "N":
                 return new NorthState();

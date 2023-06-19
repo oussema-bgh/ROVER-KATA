@@ -11,8 +11,6 @@ public class Rover {
 
     private Plateau plateau;
 
-    public Rover(){}
-
     public Rover(int x, int y, RoverState state, Plateau plateau) {
         this.x = x;
         this.y = y;

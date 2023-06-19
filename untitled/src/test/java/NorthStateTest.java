@@ -1,20 +1,21 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import models.RoverFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import models.Plateau;
 import models.Rover;
-import services.NorthState;
 
 class NorthStateTest {
 
     private Rover rover;
 
     @BeforeEach
-     void setUp() {
+    void setUp() {
         Plateau plateau = new Plateau(5, 5);
-        rover = new Rover(1, 2, new NorthState(), plateau);
+        RoverFactory roverFactory = new RoverFactory(plateau);
+        rover = roverFactory.createRover(1, 2, "N");
     }
 
     @Test

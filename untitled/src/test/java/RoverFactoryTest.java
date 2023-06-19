@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import models.Plateau;
 import models.Rover;
 import models.RoverFactory;
-import services.NorthState;
+import services.*;
 
 class RoverFactoryTest {
 
@@ -26,8 +26,23 @@ class RoverFactoryTest {
         Assertions.assertTrue(rover.getState() instanceof NorthState);
     }
 
+
     @Test
-    void testCreateRoverWithInvalidDirection() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> roverFactory.createRover(1, 2, "X"));
-    }
+    void testCreateState() {
+
+        RoverState northState = roverFactory.createState("N");
+        Assertions.assertTrue(northState instanceof NorthState);
+
+        RoverState southState = roverFactory.createState("S");
+        Assertions.assertTrue(southState instanceof SouthState);
+
+        RoverState eastState = roverFactory.createState("E");
+        Assertions.assertTrue(eastState instanceof EastState);
+
+        RoverState westState = roverFactory.createState("W");
+        Assertions.assertTrue(westState instanceof WestState);
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> roverFactory.createState("InvalidDirection"));    }
+
+
 }
