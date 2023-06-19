@@ -7,31 +7,30 @@ import models.Plateau;
 import models.Rover;
 import services.NorthState;
 
-public class NorthStateTest {
+class NorthStateTest {
 
-    private Plateau plateau;
     private Rover rover;
 
     @BeforeEach
-    public void setUp() {
-        plateau = new Plateau(5, 5);
+     void setUp() {
+        Plateau plateau = new Plateau(5, 5);
         rover = new Rover(1, 2, new NorthState(), plateau);
     }
 
     @Test
-    public void testMoveForward() {
+     void testMoveForward() {
         rover.moveForward();
         assertEquals("1 3 N", rover.getFinalPosition());
     }
 
     @Test
-    public void testTurnLeft() {
+     void testTurnLeft() {
         rover.turnLeft();
         assertEquals("1 2 W", rover.getFinalPosition());
     }
 
     @Test
-    public void testTurnRight() {
+     void testTurnRight() {
         rover.turnRight();
         assertEquals("1 2 E", rover.getFinalPosition());
     }

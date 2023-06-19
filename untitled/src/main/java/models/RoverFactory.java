@@ -5,7 +5,7 @@ import services.*;
 
 public class RoverFactory {
 
-    private Plateau plateau;
+    private final Plateau plateau;
 
     public RoverFactory(Plateau plateau) {
         this.plateau = plateau;

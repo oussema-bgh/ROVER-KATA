@@ -8,6 +8,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static java.lang.System.*;
+
 public class Main {
     public static void main(String[] args) {
         try {
@@ -16,27 +18,27 @@ public class Main {
                 String fileName = args[0];
 
                 List<String> list = Files.readAllLines(Paths.get(fileName));
-                if (null != list && !list.isEmpty()) {
-                    Plateau plateau = new Plateau(Integer.valueOf(list.get(0).split(" ")[0]),
-                            Integer.valueOf(list.get(0).split(" ")[1]));
+                if (!list.isEmpty()) {
+                    Plateau plateau = new Plateau(Integer.parseInt(list.get(0).split(" ")[0]),
+                            Integer.parseInt(list.get(0).split(" ")[1]));
                     RoverFactory roverFactory = new RoverFactory(plateau);
 
 
                     for (int i = 1; i < list.size() - 1; i += 2) {
                         String[] donnees = list.get(i).split(" ");
 
-                        Rover rover = roverFactory.createRover(Integer.parseInt(donnees[0]), Integer.valueOf(donnees[1]), donnees[2]);
+                        Rover rover = roverFactory.createRover(Integer.parseInt(donnees[0]), Integer.parseInt(donnees[1]), donnees[2]);
 
                         String instraction = list.get(i + 1);
                         rover.executeCommands(instraction);
 
-                        System.out.println(rover.getFinalPosition());
+                        out.println(rover.getFinalPosition());
                     }
 
                 }
             }
         } catch (Exception e) {
-            System.err.println("program failed with error: " + e.toString());
+            err.println("program failed with error: " + e.toString());
         }
     }
 }
